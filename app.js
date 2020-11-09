@@ -1,13 +1,15 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const Campground = require('./models/campground');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false   //esto me quito el problema de las deprecationes. Igual es recomendable cambiar de metodo
 });
 
 const db = mongoose.connection;
@@ -18,8 +20,8 @@ db.once("open", () => {
 
 const app = express();
 
-
-app.set('view engine', 'ejs');  //creo q aca meteria lo de react!!!!!!
+app.engine('ejs', ejsMate);   //esto es para no usar el "default de ejs"
+app.set('view engine', 'ejs');  //creo q aca meteria lo de react!!!!!!, vuela esto y todo lo de ejs
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({extended: true}));
