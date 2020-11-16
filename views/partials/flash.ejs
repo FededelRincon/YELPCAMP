@@ -5,5 +5,12 @@
 </div>
 <% } %>
 
+<% if(error && error.length) {%>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= error %>
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+
 
 <!-- success.length si es 0 se lo considera false -->
