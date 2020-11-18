@@ -59,7 +59,9 @@ passport.use(new LocalStrategy(User.authenticate())); //authenticate es de passp
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use((req, res, next) => {
+app.use((req, res, next) => {//los accesos a todos los templates. Traigo y/o llevo info para todos lados. el curret user para ocultar si esta log, y el resto para los flash de error y success
+
+    res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
