@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;  //esto es para abreviar cuando se creen (new sc
 
 const reviewSchema = new Schema({
     body: String,
-    rating: Number
+    rating: Number,
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 module.exports = mongoose.model("Review", reviewSchema); //aca iba en singular xq mongoose la crea en plural
