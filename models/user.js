@@ -10,6 +10,6 @@ const UserSchema = new Schema({
     }
 });
 
-UserSchema.plugin(passportLocalMongoose); //este plugin mete usuario y contraseña como campos, y le mete cosas como unique, require, etc
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);

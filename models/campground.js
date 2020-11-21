@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Review = require('./review'); //necesito esto para el delete
+const Review = require('./review')
 const Schema = mongoose.Schema;
 
 const CampgroundSchema = new Schema({
@@ -8,24 +8,20 @@ const CampgroundSchema = new Schema({
     price: Number,
     description: String,
     location: String,
-    author:{
-        type:Schema.Types.ObjectId, 
+    author: {
+        type: Schema.Types.ObjectId,
         ref: 'User'
     },
     reviews: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Review'     //esto lo saca de la tabla de review
+            ref: 'Review'
         }
     ]
 });
 
-//esto funciona xq hay en app.js esta (linea 109 aprox) 
-    //await Review.findByIdAndDelete(reviewId);
-//q nos trae el findByIdAndDelete(id) que es el que se usa con el _id
-//y como es un middleware, solo va a funcionar cuando se llame a esta funcion
-CampgroundSchema.post('findOneAndDelete', async function(doc) {
-    if(doc){
+CampgroundSchema.post('findOneAndDelete', async function (doc) {
+    if (doc) {
         await Review.deleteMany({
             _id: {
                 $in: doc.reviews

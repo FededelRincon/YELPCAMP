@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;  //esto es para abreviar cuando se creen (new schema) las tablas y para combinarlas
+const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
     body: String,
@@ -10,4 +10,5 @@ const reviewSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("Review", reviewSchema); //aca iba en singular xq mongoose la crea en plural
+module.exports = mongoose.model("Review", reviewSchema);
+
