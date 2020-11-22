@@ -1,3 +1,13 @@
+//voy a tener un .env haciendo referencia a cloudinary, y adentro: 
+//CLOUDINARY_CLOUD_NAME=
+//CLOUDINARY_KEY=
+//CLOUDINARY_SECRET=
+if(process.env.NODE_ENV !== "production"){
+    require('dotenv').config();//el dotenv en un paquete que carga las variables de desarrollo q estan en .env
+}
+
+console.log(process.env.SECRET);
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
